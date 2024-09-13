@@ -7,10 +7,10 @@ import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import * as gcpLogging from '@google-cloud/logging-bunyan';
 import { AppModule } from './app/app.module';
-import { Request as Req } from 'express';
 import BunyanLog = require('bunyan');
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Express {
     interface Request {
       // Added to express request type definition since the GCP Logging middleware attaches the logger
