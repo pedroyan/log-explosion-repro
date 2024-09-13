@@ -1,0 +1,35 @@
+{
+  "name": "pedro-yan",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "includedScripts": [],
+  "sourceRoot": "src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": [
+        "build"
+      ],
+      "options": {
+        "buildTarget": "pedro-yan:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "pedro-yan:build:development"
+        },
+        "production": {
+          "buildTarget": "pedro-yan:build:production"
+        }
+      }
+    },
+    "docker-build": {
+      "dependsOn": [
+        "build"
+      ],
+      "command": "docker build -f Dockerfile . -t pedro-yan"
+    }
+  }
+}
